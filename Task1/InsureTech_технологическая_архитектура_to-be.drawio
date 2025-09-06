@@ -163,9 +163,7 @@
 
         <!-- AZ 3A -->
         <mxCell id="az3a-title" value="Зона доступности 3A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
-          <mxCell id="az3a-title" value="Зона доступности 3A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
-            <mxGeometry x="750" y="310" width="140" height="20" as="geometry" />
-          </mxCell>
+          <mxGeometry x="750" y="310" width="140" height="20" as="geometry" />
         </mxCell>
 
         <!-- Load Balancer AZ 3A -->
