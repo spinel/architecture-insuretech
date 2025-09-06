@@ -1,0 +1,421 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:00:00.000Z" agent="5.0" etag="abc123" version="22.1.16" type="device">
+  <diagram name="InsureTech_технологическая_архитектура_to-be" id="insuretech-to-be-architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="InsureTech - Технологическая архитектура (To-Be)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Internet -->
+        <mxCell id="internet" value="Internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CDN Layer -->
+        <mxCell id="cdn-layer" value="CDN (Yandex Cloud CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Geo-DNS -->
+        <mxCell id="geo-dns" value="Geo-DNS (Yandex Cloud DNS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="200" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Region 1: Moscow -->
+        <mxCell id="region1-title" value="Регион 1: Москва (ru-central1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 1A -->
+        <mxCell id="az1a-title" value="Зона доступности 1A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="310" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Load Balancer AZ 1A -->
+        <mxCell id="lb1a" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Kubernetes Cluster AZ 1A -->
+        <mxCell id="k8s1a" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 1A -->
+        <mxCell id="core-app1a" value="core-app&#xa;(3 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info1a" value="client-info&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="130" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator1a" value="ins-product-aggregator&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement1a" value="ins-comp-settlement&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="130" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache AZ 1A -->
+        <mxCell id="redis1a" value="Redis Cache&#xa;(Yandex Managed Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 1B -->
+        <mxCell id="az1b-title" value="Зона доступности 1B" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="220" y="310" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Load Balancer AZ 1B -->
+        <mxCell id="lb1b" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Kubernetes Cluster AZ 1B -->
+        <mxCell id="k8s1b" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 1B -->
+        <mxCell id="core-app1b" value="core-app&#xa;(3 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="240" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info1b" value="client-info&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="300" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator1b" value="ins-product-aggregator&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="240" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement1b" value="ins-comp-settlement&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="300" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache AZ 1B -->
+        <mxCell id="redis1b" value="Redis Cache&#xa;(Yandex Managed Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="510" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Database Cluster Region 1 -->
+        <mxCell id="db-cluster1" value="PostgreSQL Cluster&#xa;(Yandex Managed PostgreSQL)&#xa;&#xa;Primary: AZ 1A&#xa;Standby: AZ 1B&#xa;Read Replica: AZ 1C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="580" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Region 2: Yekaterinburg -->
+        <mxCell id="region2-title" value="Регион 2: Екатеринбург (ru-central1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 2A -->
+        <mxCell id="az2a-title" value="Зона доступности 2A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="310" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Load Balancer AZ 2A -->
+        <mxCell id="lb2a" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Kubernetes Cluster AZ 2A -->
+        <mxCell id="k8s2a" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 2A -->
+        <mxCell id="core-app2a" value="core-app&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="420" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info2a" value="client-info&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="480" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator2a" value="ins-product-aggregator&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="420" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement2a" value="ins-comp-settlement&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="480" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache AZ 2A -->
+        <mxCell id="redis2a" value="Redis Cache&#xa;(Yandex Managed Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="510" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Database Cluster Region 2 -->
+        <mxCell id="db-cluster2" value="PostgreSQL Cluster&#xa;(Yandex Managed PostgreSQL)&#xa;&#xa;Read Replica from Region 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="580" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Region 3: Novosibirsk -->
+        <mxCell id="region3-title" value="Регион 3: Новосибирск (ru-central1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="750" y="280" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 3A -->
+        <mxCell id="az3a-title" value="Зона доступности 3A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxCell id="az3a-title" value="Зона доступности 3A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+            <mxGeometry x="750" y="310" width="140" height="20" as="geometry" />
+          </mxCell>
+        </mxCell>
+
+        <!-- Load Balancer AZ 3A -->
+        <mxCell id="lb3a" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Kubernetes Cluster AZ 3A -->
+        <mxCell id="k8s3a" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 3A -->
+        <mxCell id="core-app3a" value="core-app&#xa;(2 replicas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="770" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info3a" value="client-info&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="830" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator3a" value="ins-product-aggregator&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="770" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement3a" value="ins-comp-settlement&#xa;(1 replica)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="830" y="460" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache AZ 3A -->
+        <mxCell id="redis3a" value="Redis Cache&#xa;(Yandex Managed Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="510" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Database Cluster Region 3 -->
+        <mxCell id="db-cluster3" value="PostgreSQL Cluster&#xa;(Yandex Managed PostgreSQL)&#xa;&#xa;Read Replica from Region 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="580" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="api-gateway" value="API Gateway&#xa;(Yandex Cloud API Gateway)&#xa;&#xa;Rate Limiting: 20 RPS per partner&#xa;Health Checks: /health endpoints" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Monitoring -->
+        <mxCell id="monitoring" value="Monitoring Stack&#xa;(Yandex Cloud Monitoring)&#xa;&#xa;Prometheus + Grafana&#xa;AlertManager&#xa;Logging: ELK Stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="700" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Backup -->
+        <mxCell id="backup" value="Backup &amp; Recovery&#xa;(Yandex Cloud Backup)&#xa;&#xa;RTO: 45 min&#xa;RPO: 15 min&#xa;Automated backups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="700" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- External Services -->
+        <mxCell id="external-services" value="Внешние сервисы&#xa;&#xa;5 страховых компаний&#xa;SMS/Email провайдеры" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="700" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <!-- Internet to CDN -->
+        <mxCell id="conn1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="internet" target="cdn-layer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="130" as="sourcePoint" />
+            <mxPoint x="600" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- CDN to Geo-DNS -->
+        <mxCell id="conn2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="cdn-layer" target="geo-dns">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="190" as="sourcePoint" />
+            <mxPoint x="600" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Geo-DNS to Load Balancers -->
+        <mxCell id="conn3" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="geo-dns" target="lb1a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="240" as="sourcePoint" />
+            <mxPoint x="120" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="geo-dns" target="lb2a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="240" as="sourcePoint" />
+            <mxPoint x="470" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn5" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="geo-dns" target="lb3a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="240" as="sourcePoint" />
+            <mxPoint x="820" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Load Balancers to K8s -->
+        <mxCell id="conn6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="lb1a" target="k8s1a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="400" as="sourcePoint" />
+            <mxPoint x="120" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn7" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="lb1b" target="k8s1b">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="400" as="sourcePoint" />
+            <mxPoint x="290" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn8" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="lb2a" target="k8s2a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="400" as="sourcePoint" />
+            <mxPoint x="470" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn9" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="lb3a" target="k8s3a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="400" as="sourcePoint" />
+            <mxPoint x="820" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- K8s to Redis -->
+        <mxCell id="conn10" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="k8s1a" target="redis1a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="500" as="sourcePoint" />
+            <mxPoint x="120" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn11" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="k8s1b" target="redis1b">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="500" as="sourcePoint" />
+            <mxPoint x="290" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn12" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="k8s2a" target="redis2a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="500" as="sourcePoint" />
+            <mxPoint x="470" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn13" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="k8s3a" target="redis3a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="500" as="sourcePoint" />
+            <mxPoint x="820" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- K8s to Database -->
+        <mxCell id="conn14" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" edge="1" parent="1" source="k8s1a" target="db-cluster1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="500" as="sourcePoint" />
+            <mxPoint x="200" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn15" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" edge="1" parent="1" source="k8s1b" target="db-cluster1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="500" as="sourcePoint" />
+            <mxPoint x="200" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn16" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" edge="1" parent="1" source="k8s2a" target="db-cluster2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="500" as="sourcePoint" />
+            <mxPoint x="550" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn17" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" edge="1" parent="1" source="k8s3a" target="db-cluster3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="500" as="sourcePoint" />
+            <mxPoint x="900" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Database Replication -->
+        <mxCell id="conn18" value="Streaming Replication" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="db-cluster1" target="db-cluster2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="620" as="sourcePoint" />
+            <mxPoint x="400" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="conn19" value="Streaming Replication" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="db-cluster1" target="db-cluster3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="620" as="sourcePoint" />
+            <mxPoint x="750" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- API Gateway to Load Balancers -->
+        <mxCell id="conn20" value="API Traffic" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" parent="1" source="api-gateway" target="lb1a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="700" as="sourcePoint" />
+            <mxPoint x="120" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Monitoring connections -->
+        <mxCell id="conn21" value="Monitoring" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="monitoring" target="k8s1a">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="700" as="sourcePoint" />
+            <mxPoint x="120" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- External services -->
+        <mxCell id="conn22" value="External APIs" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d6b656;" edge="1" parent="1" source="k8s1a" target="external-services">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="450" as="sourcePoint" />
+            <mxPoint x="875" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Comments and Annotations -->
+        <mxCell id="comment1" value="Стратегия масштабирования:&#xa;• Горизонтальное масштабирование через Kubernetes HPA&#xa;• Вертикальное масштабирование через VPA&#xa;• Автоматическое масштабирование на основе метрик" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="800" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment2" value="Конфигурация Kubernetes:&#xa;• Независимые кластеры в каждом регионе&#xa;• Причина: изоляция отказов, независимое масштабирование&#xa;• Cross-region service discovery через DNS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="800" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment3" value="Балансировка нагрузки:&#xa;• Geo-DNS для географической маршрутизации&#xa;• Health checks на всех уровнях&#xa;• Circuit breaker pattern для отказоустойчивости" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="590" y="800" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment4" value="Failover стратегия:&#xa;• Автоматический failover между AZ в регионе&#xa;• Cross-region failover при полном отказе региона&#xa;• RTO: 45 мин, RPO: 15 мин" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="880" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment5" value="Конфигурация БД:&#xa;• PostgreSQL Streaming Replication&#xa;• Primary в Москве, Standby в других AZ&#xa;• Read replicas в регионах 2 и 3&#xa;• Шардирование не требуется (50GB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="880" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment6" value="Доступность: 99.9%&#xa;• Multi-AZ deployment&#xa;• Автоматическое восстановление&#xa;• Мониторинг и алертинг 24/7" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="590" y="880" width="250" height="60" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
