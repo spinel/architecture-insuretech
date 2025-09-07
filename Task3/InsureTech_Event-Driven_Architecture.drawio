@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.0">
+  <diagram name="InsureTech_Event-Driven_Architecture" id="insuretech-event-driven">
+    <mxGraphModel dx="1188" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="InsureTech - Event-Driven Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Internet -->
+        <mxCell id="internet" value="Internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CDN and DNS -->
+        <mxCell id="cdn-layer" value="CDN (Yandex Cloud CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="150" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="geo-dns" value="Geo-DNS (Yandex Cloud DNS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="200" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Region 1: Moscow -->
+        <mxCell id="region1-title" value="Регион 1: Москва (ru-central1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="200" y="280" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 1A -->
+        <mxCell id="az1a-title" value="Зона доступности 1A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="200" y="310" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lb1a" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="210" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="k8s1a" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="210" y="410" width="120" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 1A -->
+        <mxCell id="core-app1a" value="core-app&#xa;(Event Consumer + Publisher)&#xa;3 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="220" y="420" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info1a" value="client-info&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="280" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator1a" value="ins-product-aggregator&#xa;(Event Publisher)&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="220" y="460" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement1a" value="ins-comp-settlement&#xa;(Event Consumer + Publisher)&#xa;1 replica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="280" y="460" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- New Event-Driven Services -->
+        <mxCell id="settlement-processor1a" value="Settlement Processor&#xa;(Event Consumer)&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="220" y="510" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="outbox-publisher1a" value="Outbox Publisher&#xa;1 replica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="280" y="510" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Kafka Cluster -->
+        <mxCell id="kafka-cluster" value="Apache Kafka Cluster&#xa;&#xa;Topics:&#xa;• insurance.products.updated&#xa;• insurance.policies.created&#xa;• insurance.settlements.required&#xa;• insurance.companies.status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="340" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache -->
+        <mxCell id="redis1a" value="Redis Cache&#xa;(Yandex Managed Redis)&#xa;&#xa;• tariffs:{company_id}&#xa;• tariffs:all&#xa;• companies:status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="210" y="530" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Database -->
+        <mxCell id="db-cluster1" value="PostgreSQL Cluster&#xa;(Yandex Managed PostgreSQL)&#xa;&#xa;Primary: AZ 1A&#xa;Standby: AZ 1B&#xa;Read Replica: AZ 1C&#xa;&#xa;+ Outbox Tables" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="200" y="620" width="300" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- External Services -->
+        <mxCell id="external-services" value="Внешние сервисы&#xa;&#xa;10 страховых компаний&#xa;SMS/Email провайдеры" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="80" y="550" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="api-gateway" value="API Gateway&#xa;(Yandex Cloud API Gateway)&#xa;&#xa;Rate Limiting: 20 RPS per partner&#xa;Health Checks: /health endpoints" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="200" y="750" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Monitoring -->
+        <mxCell id="monitoring" value="Monitoring Stack&#xa;(Yandex Cloud Monitoring)&#xa;&#xa;Prometheus + Grafana&#xa;AlertManager&#xa;Kafka Metrics&#xa;Event Tracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="450" y="750" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Event Flow Arrows -->
+        <mxCell id="event-flow1" value="insurance.products.updated" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="kafka-cluster" target="core-app1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="400" as="sourcePoint" />
+            <mxPoint x="220" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="event-flow2" value="insurance.policies.created" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="core-app1a" target="kafka-cluster" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="440" as="sourcePoint" />
+            <mxPoint x="500" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="event-flow3" value="insurance.settlements.required" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="settlement1a" target="kafka-cluster" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="480" as="sourcePoint" />
+            <mxPoint x="500" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="event-flow4" value="insurance.settlements.required" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="kafka-cluster" target="settlement-processor1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="400" as="sourcePoint" />
+            <mxPoint x="220" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Outbox Pattern -->
+        <mxCell id="outbox-flow1" value="Transactional Outbox" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;dashed=1;" parent="1" source="core-app1a" target="outbox-publisher1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="440" as="sourcePoint" />
+            <mxPoint x="280" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="outbox-flow2" value="Publish Events" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;dashed=1;" parent="1" source="outbox-publisher1a" target="kafka-cluster" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="525" as="sourcePoint" />
+            <mxPoint x="500" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Cache Updates -->
+        <mxCell id="cache-flow1" value="Cache Update" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" parent="1" source="kafka-cluster" target="redis1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="400" as="sourcePoint" />
+            <mxPoint x="270" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- External API Calls -->
+        <mxCell id="external-flow1" value="Async API Calls" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d6b656;" parent="1" source="settlement-processor1a" target="external-services" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="530" as="sourcePoint" />
+            <mxPoint x="140" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="external-flow2" value="Product Data" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d6b656;" parent="1" source="external-services" target="aggregator1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="575" as="sourcePoint" />
+            <mxPoint x="220" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Database Connections -->
+        <mxCell id="db-flow1" value="Outbox Table" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" parent="1" source="core-app1a" target="db-cluster1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="245" y="460" as="sourcePoint" />
+            <mxPoint x="350" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="db-flow2" value="Outbox Table" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" parent="1" source="aggregator1a" target="db-cluster1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="245" y="500" as="sourcePoint" />
+            <mxPoint x="350" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Comments -->
+        <mxCell id="comment1" value="Event-Driven Benefits:&#xa;• Асинхронная обработка&#xa;• Масштабируемость&#xa;• Отказоустойчивость&#xa;• Loose coupling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="200" y="850" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment2" value="Transactional Outbox:&#xa;• Консистентность данных&#xa;• Гарантированная доставка&#xa;• Отсутствие дублирования&#xa;• Атомарность операций" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="420" y="850" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment3" value="Kafka Topics:&#xa;• insurance.products.updated&#xa;• insurance.policies.created&#xa;• insurance.settlements.required&#xa;• insurance.companies.status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="640" y="850" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment4" value="New Services:&#xa;• Settlement Processor&#xa;• Outbox Publisher&#xa;• Event Consumers&#xa;• Cache Managers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="860" y="850" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Легенда:&#xa;🟢 Event Flow (Kafka)&#xa;🟡 Cache Updates&#xa;🟠 Outbox Pattern&#xa;🔵 Database&#xa;🟤 External APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f9f9;strokeColor=#666666;fontSize=10;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="340" width="200" height="100" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

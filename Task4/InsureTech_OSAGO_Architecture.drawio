@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.0">
+  <diagram name="InsureTech_OSAGO_Architecture" id="insuretech-osago">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="InsureTech - Event-Driven Architecture with OSAGO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Internet -->
+        <mxCell id="internet" value="Internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="750" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CDN and DNS -->
+        <mxCell id="cdn-layer" value="CDN (Yandex Cloud CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="150" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="geo-dns" value="Geo-DNS (Yandex Cloud DNS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="200" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Region 1: Moscow -->
+        <mxCell id="region1-title" value="Регион 1: Москва (ru-central1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="300" y="280" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AZ 1A -->
+        <mxCell id="az1a-title" value="Зона доступности 1A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="300" y="310" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lb1a" value="Load Balancer&#xa;(Yandex Cloud LB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="k8s1a" value="Kubernetes Cluster&#xa;(Yandex Managed K8s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="410" width="120" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Services in K8s 1A -->
+        <mxCell id="core-app1a" value="core-app&#xa;(Event Consumer + Publisher)&#xa;OSAGO API + SSE&#xa;10-15 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="320" y="420" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client-info1a" value="client-info&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="380" y="420" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator1a" value="ins-product-aggregator&#xa;(Event Publisher)&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="320" y="460" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement1a" value="ins-comp-settlement&#xa;(Event Consumer + Publisher)&#xa;1 replica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="380" y="460" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- New OSAGO Services -->
+        <mxCell id="osago-aggregator1a" value="osago-aggregator&#xa;(NEW SERVICE)&#xa;5-10 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="320" y="510" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="settlement-processor1a" value="Settlement Processor&#xa;(Event Consumer)&#xa;2 replicas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="380" y="510" width="50" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="outbox-publisher1a" value="Outbox Publisher&#xa;1 replica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="350" y="560" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Kafka Cluster -->
+        <mxCell id="kafka-cluster" value="Apache Kafka Cluster&#xa;&#xa;Topics:&#xa;• insurance.products.updated&#xa;• insurance.policies.created&#xa;• insurance.settlements.required&#xa;• insurance.companies.status&#xa;• osago.offers.received (NEW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="600" y="340" width="200" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Redis Cache -->
+        <mxCell id="redis1a" value="Redis Cache&#xa;(Yandex Managed Redis)&#xa;&#xa;• tariffs:{company_id}&#xa;• tariffs:all&#xa;• companies:status&#xa;• osago_cache:{vin} (NEW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="550" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Database -->
+        <mxCell id="db-cluster1" value="PostgreSQL Cluster&#xa;(Yandex Managed PostgreSQL)&#xa;&#xa;Primary: AZ 1A&#xa;Standby: AZ 1B&#xa;Read Replica: AZ 1C&#xa;&#xa;+ Outbox Tables&#xa;+ osago_applications (NEW)&#xa;+ osago_offers (NEW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="300" y="650" width="300" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- External Services -->
+        <mxCell id="external-services" value="Внешние сервисы&#xa;&#xa;10 страховых компаний&#xa;OSAGO APIs (NEW)&#xa;SMS/Email провайдеры" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="180" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Web Application -->
+        <mxCell id="web-app" value="InsureTech Web App&#xa;(React + SSE)&#xa;&#xa;OSAGO Quote Form&#xa;Real-time Offers Display" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="300" y="800" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="api-gateway" value="API Gateway&#xa;(Yandex Cloud API Gateway)&#xa;&#xa;Rate Limiting: 20 RPS per partner&#xa;Health Checks: /health endpoints&#xa;OSAGO Endpoints (NEW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="300" y="900" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Monitoring -->
+        <mxCell id="monitoring" value="Monitoring Stack&#xa;(Yandex Cloud Monitoring)&#xa;&#xa;Prometheus + Grafana&#xa;AlertManager&#xa;Kafka Metrics&#xa;OSAGO Metrics (NEW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="550" y="900" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Resilience Patterns Icons -->
+        <!-- Timeout -->
+        <mxCell id="timeout-icon1" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=quota" vertex="1" parent="1">
+          <mxGeometry x="450" y="520" width="30" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="timeout-label1" value="60s" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+          <mxGeometry x="485" y="525" width="25" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Retry -->
+        <mxCell id="retry-icon1" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=job" vertex="1" parent="1">
+          <mxGeometry x="450" y="555" width="30" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="retry-label1" value="3x" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+          <mxGeometry x="485" y="560" width="25" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Rate Limiter -->
+        <mxCell id="rate-limit-icon1" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=deploy" vertex="1" parent="1">
+          <mxGeometry x="450" y="590" width="30" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="rate-limit-label1" value="100 RPS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+          <mxGeometry x="485" y="595" width="35" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Circuit Breaker -->
+        <mxCell id="circuit-breaker-icon1" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=c_role" vertex="1" parent="1">
+          <mxGeometry x="450" y="625" width="30" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="circuit-breaker-label1" value="50%" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+          <mxGeometry x="485" y="630" width="25" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Event Flow Arrows -->
+        <!-- OSAGO Application Flow -->
+        <mxCell id="osago-flow1" value="POST /api/v1/osago/quote" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#6c8ebf;" parent="1" source="web-app" target="core-app1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="800" as="sourcePoint" />
+            <mxPoint x="345" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="osago-flow2" value="POST /api/v1/osago/applications" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#b85450;" parent="1" source="core-app1a" target="osago-aggregator1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="470" as="sourcePoint" />
+            <mxPoint x="320" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="osago-flow3" value="Parallel API Calls" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d6b656;" parent="1" source="osago-aggregator1a" target="external-services" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="530" as="sourcePoint" />
+            <mxPoint x="240" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- WebSocket/SSE Flow -->
+        <mxCell id="sse-flow1" value="WebSocket" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="osago-aggregator1a" target="core-app1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="530" as="sourcePoint" />
+            <mxPoint x="370" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="sse-flow2" value="Server-Sent Events" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" parent="1" source="core-app1a" target="web-app" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="420" as="sourcePoint" />
+            <mxPoint x="400" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Event Flow to Kafka -->
+        <mxCell id="event-flow1" value="osago.offers.received" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#28a745;dashed=1;" parent="1" source="osago-aggregator1a" target="kafka-cluster" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="530" as="sourcePoint" />
+            <mxPoint x="600" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Outbox Pattern -->
+        <mxCell id="outbox-flow1" value="Transactional Outbox" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;dashed=1;" parent="1" source="osago-aggregator1a" target="outbox-publisher1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="550" as="sourcePoint" />
+            <mxPoint x="350" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="outbox-flow2" value="Publish Events" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;dashed=1;" parent="1" source="outbox-publisher1a" target="kafka-cluster" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="575" as="sourcePoint" />
+            <mxPoint x="600" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Cache Updates -->
+        <mxCell id="cache-flow1" value="Cache Update" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#d79b00;" parent="1" source="kafka-cluster" target="redis1a" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="400" as="sourcePoint" />
+            <mxPoint x="370" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Database Connections -->
+        <mxCell id="db-flow1" value="Outbox + OSAGO Tables" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9673a6;" parent="1" source="osago-aggregator1a" target="db-cluster1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="550" as="sourcePoint" />
+            <mxPoint x="450" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Comments -->
+        <mxCell id="comment1" value="OSAGO Flow:&#xa;1. Web App → core-app (REST + SSE)&#xa;2. core-app → osago-aggregator (REST + WS)&#xa;3. osago-aggregator → Insurance Companies (Parallel)&#xa;4. Real-time updates via WebSocket/SSE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="300" y="1000" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment2" value="Resilience Patterns:&#xa;• Timeout: 60s for insurance companies&#xa;• Retry: 3 attempts with exponential backoff&#xa;• Rate Limiting: 100 RPS per company&#xa;• Circuit Breaker: 50% failure threshold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="520" y="1000" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment3" value="New Components:&#xa;• osago-aggregator: 5-10 replicas&#xa;• OSAGO database tables&#xa;• WebSocket/SSE for real-time&#xa;• OSAGO-specific Kafka topics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="740" y="1000" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comment4" value="Performance:&#xa;• 2,500 concurrent users&#xa;• Parallel processing of 10 companies&#xa;• Real-time offer display&#xa;• Caching for repeated requests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="960" y="1000" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Легенда:&#xa;🟢 Event Flow (Kafka)&#xa;🟡 Cache Updates&#xa;🟠 Outbox Pattern&#xa;🔵 Database&#xa;🟤 External APIs&#xa;🔴 REST API&#xa;🟣 WebSocket/SSE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f9f9;strokeColor=#666666;fontSize=10;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="340" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Resilience Patterns Legend -->
+        <mxCell id="resilience-legend" value="Паттерны отказоустойчивости:&#xa;⏱️ Timeout (60s)&#xa;🔄 Retry (3x)&#xa;🚦 Rate Limiter (100 RPS)&#xa;⚡ Circuit Breaker (50%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f9f9;strokeColor=#666666;fontSize=10;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="480" width="200" height="100" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

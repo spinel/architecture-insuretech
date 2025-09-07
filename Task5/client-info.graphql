@@ -1,0 +1,229 @@
+# GraphQL Schema для сервиса client-info
+# Основан на анализе REST API из Swagger контракта
+
+# Скалярные типы
+scalar Date
+scalar DateTime
+
+# Основные типы данных
+
+"""
+Клиент - основная сущность для хранения информации о клиенте
+"""
+type Client {
+  """Уникальный идентификатор клиента"""
+  id: ID!
+  
+  """Имя клиента"""
+  name: String!
+  
+  """Возраст клиента"""
+  age: Int!
+  
+  """Список документов клиента"""
+  documents: [Document!]!
+  
+  """Список родственников клиента"""
+  relatives: [Relative!]!
+  
+  """Дата создания записи о клиенте"""
+  createdAt: DateTime
+  
+  """Дата последнего обновления записи о клиенте"""
+  updatedAt: DateTime
+}
+
+"""
+Документ клиента - паспорт, водительские права и другие документы
+"""
+type Document {
+  """Уникальный идентификатор документа"""
+  id: ID!
+  
+  """Тип документа (passport, driver_license, etc.)"""
+  type: String!
+  
+  """Номер документа"""
+  number: String!
+  
+  """Дата выдачи документа"""
+  issueDate: Date!
+  
+  """Дата истечения документа"""
+  expiryDate: Date
+  
+  """Ссылка на клиента-владельца документа"""
+  client: Client!
+  
+  """Дата создания записи о документе"""
+  createdAt: DateTime
+  
+  """Дата последнего обновления записи о документе"""
+  updatedAt: DateTime
+}
+
+"""
+Родственник клиента - члены семьи и другие родственники
+"""
+type Relative {
+  """Уникальный идентификатор родственника"""
+  id: ID!
+  
+  """Тип родства (spouse, child, parent, sibling, etc.)"""
+  relationType: String!
+  
+  """Имя родственника"""
+  name: String!
+  
+  """Возраст родственника"""
+  age: Int!
+  
+  """Ссылка на клиента"""
+  client: Client!
+  
+  """Дата создания записи о родственнике"""
+  createdAt: DateTime
+  
+  """Дата последнего обновления записи о родственнике"""
+  updatedAt: DateTime
+}
+
+# Запросы (Queries)
+
+type Query {
+  """
+  Получить информацию о клиенте по ID
+  Эквивалент: GET /clients/{id}
+  """
+  client(id: ID!): Client
+  
+  """
+  Получить список всех клиентов
+  Дополнительная функциональность для будущего расширения
+  """
+  clients(
+    """Количество клиентов для возврата (по умолчанию 10)"""
+    limit: Int = 10
+    
+    """Смещение для пагинации (по умолчанию 0)"""
+    offset: Int = 0
+  ): [Client!]!
+  
+  """
+  Получить документ по ID
+  Дополнительная функциональность для прямого доступа к документам
+  """
+  document(id: ID!): Document
+  
+  """
+  Получить родственника по ID
+  Дополнительная функциональность для прямого доступа к родственникам
+  """
+  relative(id: ID!): Relative
+}
+
+# Мутации (Mutations) - для будущего расширения
+
+type Mutation {
+  """
+  Создать нового клиента
+  """
+  createClient(input: CreateClientInput!): Client!
+  
+  """
+  Обновить информацию о клиенте
+  """
+  updateClient(id: ID!, input: UpdateClientInput!): Client!
+  
+  """
+  Удалить клиента
+  """
+  deleteClient(id: ID!): Boolean!
+  
+  """
+  Добавить документ клиенту
+  """
+  addDocument(clientId: ID!, input: CreateDocumentInput!): Document!
+  
+  """
+  Обновить документ
+  """
+  updateDocument(id: ID!, input: UpdateDocumentInput!): Document!
+  
+  """
+  Удалить документ
+  """
+  deleteDocument(id: ID!): Boolean!
+  
+  """
+  Добавить родственника клиенту
+  """
+  addRelative(clientId: ID!, input: CreateRelativeInput!): Relative!
+  
+  """
+  Обновить информацию о родственнике
+  """
+  updateRelative(id: ID!, input: UpdateRelativeInput!): Relative!
+  
+  """
+  Удалить родственника
+  """
+  deleteRelative(id: ID!): Boolean!
+}
+
+# Input типы для мутаций
+
+input CreateClientInput {
+  name: String!
+  age: Int!
+}
+
+input UpdateClientInput {
+  name: String
+  age: Int
+}
+
+input CreateDocumentInput {
+  type: String!
+  number: String!
+  issueDate: Date!
+  expiryDate: Date
+}
+
+input UpdateDocumentInput {
+  type: String
+  number: String
+  issueDate: Date
+  expiryDate: Date
+}
+
+input CreateRelativeInput {
+  relationType: String!
+  name: String!
+  age: Int!
+}
+
+input UpdateRelativeInput {
+  relationType: String
+  name: String
+  age: Int
+}
+
+# Подписки (Subscriptions) - для real-time обновлений
+
+type Subscription {
+  """
+  Подписка на изменения клиента
+  """
+  clientUpdated(clientId: ID!): Client!
+  
+  """
+  Подписка на изменения документов клиента
+  """
+  documentsUpdated(clientId: ID!): [Document!]!
+  
+  """
+  Подписка на изменения родственников клиента
+  """
+  relativesUpdated(clientId: ID!): [Relative!]!
+}
